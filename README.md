@@ -1,0 +1,2 @@
+# richweb
+### a Sails application
