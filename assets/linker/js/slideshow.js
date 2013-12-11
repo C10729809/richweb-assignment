@@ -1,30 +1,30 @@
-var canvas, ctx;
-var aImages = [];
-var iCurSlide = 0;
+var images = ["../images/hgbanner.jpg","../images/grav_image.jpg","../images/thecouncelor.jpg"];
 
-$(function(){
-    // creating canvas objects
-    canvas = document.getElementById('slideshow');
-    ctx = canvas.getContext('2d');
+var imgNum = 0;
+var imgLength = images.length -1;
 
-    // collect all images
-    $('.slides').children().each(function(i){
-        var oImg = new Image();
-        oImg.src = this.src;
-        aImages.push(oImg);
-    });
-
-    // draw first image
-    ctx.drawImage(aImages[iCurSlide], 0, 0);
-
-    var iTimer = setInterval(changeImage, 5000); // set inner timer
+$(document).ready(function() {
+ 	imgNum = Math.floor((Math.random()*imgLength)+1);
+    	document.getElementById('bannerImg').src = images[imgNum];
 });
 
-function changeSlideTimer() {
-    iCurSlide++;
-    if (iCurSlide == $(aImages).length) {
-        iCurSlide = 0;
+$(function(){
+    setInterval(function(){showImage()},3000);   
+    return false;
+});
+
+function showImage()
+{	
+   imgNum++;
+   if (imgNum > imgLength) {
+        imgNum = 0;
     }
+    if (imgNum < 0) {
+        imgNum = imgLength;
+    }
+
+ // document.getElementById('showBanner').src = images[imgNum];
+  document.getElementById('bannerImg').src = images[imgNum];
 }
 
 
