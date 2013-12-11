@@ -1,0 +1,19 @@
+<div class="container">
+<div style="width:50%">
+<form action="/user/create" method="POST" role="form">
+	<h2>Create a new account</h2>
+	<label>Username</label>
+	<input type="text" class="form-control" name="username">
+	<label>Email</label>
+	<input type="email" class="form-control" name="email">
+	<label>Password</label>
+	<input type="password" class="form-control" name="password">
+	<label>Confirm Password</label>
+	<input type="password" class="form-control" name="confirmation">
+	</br>
+	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Account"/>
+	<input type="hidden" name="_csrf" value="<%= _csrf%>" />
+	<p>Already have an account? <a href="/user/login">Login</p>
+</form>
+</div>
+</div>

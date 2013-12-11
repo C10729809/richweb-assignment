@@ -16,15 +16,18 @@
  */
 
 module.exports = {
-    
-  
-
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to UserController)
-   */
-  _config: {}
-
-  
+	'new': function(req, res){
+		res.view()
+	},
+	
+	create: function(req, res, next){
+		User.create(req.params.all(), function userCreated(err, user){
+			if(err){
+				console.log(err);
+				return res.redirect("/user/new");
+			} else {
+				res.json(user);
+			}
+		});	
+	}
 };

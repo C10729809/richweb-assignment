@@ -1,6 +1,23 @@
 {
   "data": {
-    "user": []
+    "user": [
+      {
+        "username": "glen",
+        "email": "glenclonee@yahoo.ie",
+        "password": "123456",
+        "createdAt": "2013-12-10T21:24:47.722Z",
+        "updatedAt": "2013-12-10T21:24:47.722Z",
+        "id": 1
+      },
+      {
+        "username": "michaelj",
+        "email": "qwerty@uiop.com",
+        "password": "123456",
+        "createdAt": "2013-12-11T10:54:21.694Z",
+        "updatedAt": "2013-12-11T10:54:21.694Z",
+        "id": 2
+      }
+    ]
   },
   "schema": {
     "user": {
@@ -22,6 +39,8 @@
     }
   },
   "counters": {
-    "user": {}
+    "user": {
+      "id": 2
+    }
   }
 }
