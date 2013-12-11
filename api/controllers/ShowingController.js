@@ -38,6 +38,21 @@ module.exports = {
 			res.view({
 				showings : showings
 			});
-		})
+		});
+	},
+
+	watch : function(req,res,next){	
+		Showing.findOne(req.param("id"),function found(err, showing){
+			if (err) {
+				console.log(err);
+			}
+
+			if(!showing){
+				return res.redirect("/showing/");			
+			}
+			res.view({
+				showing : showing
+			});
+		});
 	}
-};
+}
