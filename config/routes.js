@@ -49,7 +49,10 @@ module.exports.routes = {
   },
   '/dynamic/contact': {
     view: 'dynamic/contact'
-  }
+  },
+  '/dynamic/watch': {
+    view: 'dynamic/watch'
+  },
 
   /*
   // But what if you want your home page to display
