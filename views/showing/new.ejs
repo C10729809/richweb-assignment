@@ -1,0 +1,18 @@
+<div class="container">
+<form action="/showing/create" method="POST" role="form">
+	<h2>Create a movie</h2>
+	<input type="text" placeholder="Name" class="form-control" name="name">
+	<input type="text" placeholder="Description" class="form-control" name="desc">
+	<input type="text" placeholder="Image Source" class="form-control" name="src">
+	<input type="text" placeholder="Video Source" class="form-control" name="vsrc">
+	<input type="text" placeholder="Rating" class="form-control" name="rating">
+	<input type="text" placeholder="Starring" class="form-control" name="starring">
+	<input type="text" placeholder="Director" class="form-control" name="director">
+	<input type="text" placeholder="Genre" class="form-control" name="genre">
+	<input type="text" placeholder="Duration" class="form-control" name="duration">
+	<input type="text" placeholder="Certificate" class="form-control" name="certificate">
+	<input type="text" placeholder="Shows" class="form-control" name="shows">
+	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Create"/>
+	<input type="hidden" name="_csrf" value="<%= _csrf%>" />
+</form>
+</div>

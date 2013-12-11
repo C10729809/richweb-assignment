@@ -1,0 +1,32 @@
+<div class="container" style="padding:5px">
+	<h1></b>Showings</b></h1>
+	<img src = "/images/grav_image.jpg" alt = "Gravity" width="100%" height="100%"/>
+
+	<% _.each(showings, function(showing) { %>
+	<div data-id="<%= showing.id %>" data-model="showing" class="jumbotron" >
+		<div class="row">
+  			<div class="col-sm-6 col-md-4">
+    		    		<img id="myimage"src = "<%=showing.src%>" width="220px" height="320px"/>
+				<h2><%=showing.name%></h2>
+			</div>
+  			<div class="col-sm-6 col-md-4">
+			 	<p><%= showing.desc%></p>
+				<a href="/showing/watch/<%=showing.id%>" class="btn btn-lg btn-primary">Watch now</a>
+			</div>
+			<div class="col-sm-6 col-md-4">		
+		  		<b>Starring:</b> </br>
+				<%=showing.starring%></br>
+				<b>Director: </b> 
+				<%= showing.director%></br>
+				<b>Genre: </b>
+				<%= showing.genre%></br>
+				<b>Duration:</b>
+				<%= showing.duration%></br>
+				<b>Certificate:</b> <%= showing.certificate%></br>
+				<b>Rating:</b> <%- showing.rating%></br>  <!-- &#9733&#9733&#9733&#9733-->
+				<b>Shows:</b> <%= showing.shows%></br>  
+			</div>
+		</div>
+	</div>
+	<% })%>
+</div>

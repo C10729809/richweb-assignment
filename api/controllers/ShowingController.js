@@ -16,15 +16,28 @@
  */
 
 module.exports = {
-    
-  
-
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to ShowingController)
-   */
-  _config: {}
-
-  
+	"new" : function(req, res) {
+		res.view();
+	},
+	
+	create : function(req, res, next){
+		Showing.create(req.params.all(), function showingCreated(err, showing){
+			if(err){
+				console.log(err);
+				return res.redirect("/showing/new");
+			}
+			res.redirect("/showing/");
+		});	
+	},
+	
+	index : function (req, res, next) {
+		Showing.find(function allShows(err, showings){
+			if (err) {
+				console.log(err);
+			}
+			res.view({
+				showings : showings
+			});
+		})
+	}
 };
