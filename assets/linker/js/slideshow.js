@@ -9,7 +9,7 @@ $( document ).ready(function() {
 });
 
 $(function(){
-    setInterval(function(){showImage()},3000);   
+    setInterval(function(){showImage()},4000);   
     return false;
 });
 
@@ -23,10 +23,11 @@ function showImage()
         imgNum = imgLength;
     }
   //document.getElementById('bannerImg').src = images[imgNum];
-  $("#bannerImg").fadeOut(function() { 
-  $(this).load(function() { $(this).fadeIn(); }); 
+  $("#bannerImg").animate({opacity:0},"slow",function() { 
+    $(this).load(function() { $(this).animate({opacity:1},"slow"); }); 
+
   $(this).attr("src", images[imgNum]); 
-}); 
+  }); 
 }
 
 
