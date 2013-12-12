@@ -1,0 +1,14 @@
+<div class="container">
+<div style="width:50%">
+<form action="/session/create" method="POST" role="form">
+	<h2>Sign-in here!</h2>
+	<label>Username</label>
+	<input type="text" class="form-control" name="username">
+	<label>Password</label>
+	<input type="password" class="form-control" name="password">
+	</br>
+	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in"/>
+	<input type="hidden" name="_csrf" value="<%= _csrf%>" />
+</form>
+</div>
+</div>
