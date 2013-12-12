@@ -38,19 +38,25 @@
 
     <div class="navbar navbar-inverse nabar-fixed-top">
 	<div class="container">
-	   <a class="navbar-brand" href="/"><b>sociallyCinematic</b></a>
-	   <ul class="nav navbar-nav">
+		<a class="navbar-brand" href="/"><b>sociallyCinematic</b></a>
+		<ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/showing/index">Showing</a></li>
-	     <li><a href="/dynamic/chatroom">Chatroom</a></li>
-	     <li><a href="/dynamic/about">About</a></li>
+	    <li><a href="/dynamic/chatroom">Chatroom</a></li>
+	    <li><a href="/dynamic/about">About</a></li>
             <li><a href="/dynamic/contact">Contact</a></li>
             <li><a href="/showing/new">Admin</a></li>
-	   </ul>
-	   <div align="right" >
+		</ul>
+		
+		<div align="right" >
+		
+		<% if(!req.session.authenticated) { %>
 	       <a href="/user/new" class="btn btn-success navbar-btn">Sign up</a>
-		<a href="/user/login" class="btn btn-primary navbar-btn">Login</a> 
-          </div>
+			<a href="/session/new" class="btn btn-primary navbar-btn">Login</a> 
+		<%} else { %>
+			<a href="/session/destroy" class="btn btn-primary navbar-btn">Logout</a>
+		<% } %>
+        </div>
 	</div>
     </div>
 

@@ -18,14 +18,45 @@
 module.exports = {
     
 	'new' : function(req, res){
-		var secs = 60;
-		var oldDate = new Date();
-		var newDate = Date(oldDate.getTime() + (secs * 1000));
-		req.session.cookie.expires = newDate;
-		req.session.authenticated = true;
+		//var oldDate = new Date();
+		//var newDate = new Date(oldDate.getTime() + 6000000);
+		//req.session.cookie.expires = newDate;
+		//req.session.authenticated = true;
 		//console.log(new Date());
-		console.log(req.session);
+		//console.log(req.session);
 		res.view("session/new");
+	},
+	
+	create : function(req, res){
+	
+		if(!req.param('username') || !req.param('password')){
+			console.log(req.param('username'));
+			console.log("no user name or password");		
+			res.redirect("session/new");
+			return;
+		}
+		
+		User.findOneByUsername(req.param('username'), function found(err, user){
+			if(err) {
+				console.log(err);
+			}
+			if(!user){
+				res.redirect("session/user");
+				return;
+			}
+			if(req.param('password') == user.password){
+				req.session.authenticated = true;
+				req.session.User = user;
+				
+				res.redirect('/user/show/' + user.id);
+				return;
+			}
+		});
+	},
+	
+	destroy : function (req, res){
+		req.session.destroy();
+		res.redirect('/');
 	}
 	
 };
