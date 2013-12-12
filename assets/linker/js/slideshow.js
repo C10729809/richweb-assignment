@@ -9,7 +9,7 @@ $( document ).ready(function() {
 });
 
 $(function(){
-    setInterval(function(){showImage()},5000);   
+    setInterval(function(){showImage()},3000);   
     return false;
 });
 
