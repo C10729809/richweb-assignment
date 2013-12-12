@@ -41,7 +41,7 @@ module.exports = {
 				console.log(err);
 			}
 			if(!user){
-				res.redirect("session/user");
+				res.redirect("session/new");
 				return;
 			}
 			if(req.param('password') == user.password){

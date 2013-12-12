@@ -20,6 +20,7 @@ module.exports.policies = {
   
   user : {
 	'new' : true,
+	'create' : true,
 	'*' : "authenticated"
   }
 

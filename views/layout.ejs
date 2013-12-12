@@ -51,9 +51,12 @@
 		<div align="right" >
 		
 		<% if(!req.session.authenticated) { %>
-	       <a href="/user/new" class="btn btn-success navbar-btn">Sign up</a>
+			<a href="/user/new" class="btn btn-success navbar-btn">Sign up</a>
 			<a href="/session/new" class="btn btn-primary navbar-btn">Login</a> 
 		<%} else { %>
+			<ul class="nav navbar-nav">
+				<li><a href="/user/show/<%= session.User.id %>"><%= session.User.username %>'s account</a></li>
+			</ul>&nbsp;
 			<a href="/session/destroy" class="btn btn-primary navbar-btn">Logout</a>
 		<% } %>
         </div>
