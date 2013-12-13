@@ -31,6 +31,8 @@ module.exports = {
 	},
 	
 	show: function (req, res, next){
+		console.log(new Date());
+		console.log(req.session.authenticated);
 		User.findOne(req.param('id'), function found(err, user){
 			if(err) {
 				console.log(err);

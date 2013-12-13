@@ -38,19 +38,33 @@
 
     <div class="navbar navbar-inverse nabar-fixed-top">
 	<div class="container">
-	   <a class="navbar-brand" href="/"><b>sociallyCinematic</b></a>
-	   <ul class="nav navbar-nav">
+		<a class="navbar-brand" href="/"><b>sociallyCinematic</b></a>
+		<ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/showing/index">Showing</a></li>
+<<<<<<< HEAD
 	     <li><a href="/chat/chatroom">Chatroom</a></li>
 	     <li><a href="/dynamic/about">About</a></li>
+=======
+	    <li><a href="/dynamic/chatroom">Chatroom</a></li>
+	    <li><a href="/dynamic/about">About</a></li>
+>>>>>>> b737c204b3b72f3f39d6744ebd6740f1e53e1c36
             <li><a href="/dynamic/contact">Contact</a></li>
             <li><a href="/showing/new">Admin</a></li>
-	   </ul>
-	   <div align="right" >
-	       <a href="/user/new" class="btn btn-success navbar-btn">Sign up</a>
-		<a href="/user/login" class="btn btn-primary navbar-btn">Login</a> 
-          </div>
+		</ul>
+		
+		<div align="right" >
+		
+		<% if(!req.session.authenticated) { %>
+			<a href="/user/new" class="btn btn-success navbar-btn">Sign up</a>
+			<a href="/session/new" class="btn btn-primary navbar-btn">Login</a> 
+		<%} else { %>
+			<ul class="nav navbar-nav">
+				<li><a href="/user/show/<%= session.User.id %>"><%= session.User.username %>'s account</a></li>
+			</ul>&nbsp;
+			<a href="/session/destroy" class="btn btn-primary navbar-btn">Logout</a>
+		<% } %>
+        </div>
 	</div>
     </div>
 
