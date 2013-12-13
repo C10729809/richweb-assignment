@@ -41,9 +41,9 @@ module.exports.routes = {
   '/dynamic/reviews': {
     view: 'dynamic/reviews'
   },
-  '/dynamic/chatroom': {
-    view: 'dynamic/chatroom'
-  },
+ // '/dynamic/chatroom': {
+  //  view: 'dynamic/chatroom'
+  //},
   '/dynamic/about': {
     view: 'dynamic/about'
   },
