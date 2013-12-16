@@ -13,8 +13,16 @@ module.exports = {
 		type : 'string'
 	},
 	message : {
+<<<<<<< HEAD
 		type : 'string'
 	}    
+=======
+		type: 'string'
+	},
+	username : {
+		type: 'string'
+	}	
+>>>>>>> ea5ce193baaea1672bb4dd6fe1c5f3f0ad13ed49
   }
 
 };

@@ -6,7 +6,7 @@ var intv;
 
 $( document ).ready(function() {
      imgNum = Math.floor((Math.random()*imgLength)+1);
-     document.getElementById('bannerImg').src = images[imgNum];
+     document.getElementById('bannerImg').src = images[imgNum];    
 });
 
 $(function(){
@@ -23,13 +23,29 @@ function showImage()
     if (imgNum < 0) {
         imgNum = imgLength;
     }
-  //document.getElementById('bannerImg').src = images[imgNum];
   $("#bannerImg").animate({opacity:0},"slow",function() { 
     $(this).load(function() { $(this).animate({opacity:1},"slow"); }); 
     $(this).attr("src", images[imgNum]); 
     imgNum++;
-    //clearInterval(intv);
   }); 
 }
+
+var socket = io.connect('http://localhost:1337');
+socket.on('connect', function(){
+  socket.request('/chat',{}, function(result){
+    for(var i in result){
+	  $("#msgList").append('<li>'+result[i].message+'<li>');
+    }
+
+  });
+});
+
+socket.on('message', function(msg){
+   //alert('message received: ');
+   //$("#msgList").prepend('<li>'+msg.data.message+'<li>');
+   $("#msgList").prepend('<li>'+msg.data.username+': '+msg.data.message+'<li>');
+   console.log(msg);
+});
+
 
 

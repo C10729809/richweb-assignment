@@ -17,19 +17,21 @@
 
 module.exports = {
 	'chatroom' : function(req, res){
-		res.view()
+        	Chat.subscribe(req.socket);
+		//alert("subscribed");
+		res.view();
 	},
     
   	create : function(req, res, next){
 		Chat.create(req.params.all(), function messageCreated(err, chat){
 			if(err){
 				console.log(err);
-				return res.redirect("/chat/chatroom");
+				//return res.redirect("/chat/chatroom");
 			}
-			//console.log("message:" chat.message);
-			//res.json({message: chat.message});
-			//documnet.getElementById('messageList').prepend(chat.message);
-			res.redirect("/chat/show/"+chat.message);
+
+			Chat.publishCreate({id: chat.id, username: req.session.User.username, message: chat.message});
+			//res.redirect('/chat');
+			//res.redirect("/chat/show/"+chat.message);
 		});	
 	},
 	show: function (req, res, next){

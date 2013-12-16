@@ -16,9 +16,8 @@
     log('Connecting to Sails.js...');
   }
 
-  socket.on('connect', function socketConnected() {
-
     // Listen for Comet messages from Sails
+    //socket.emit('msg', {message: "connected message"});
     socket.on('message', function messageReceived(message) {
 
       ///////////////////////////////////////////////////////////
@@ -45,8 +44,7 @@
     );
     ///////////////////////////////////////////////////////////
 
-
-  });
+});
 
 
   // Expose connected `socket` instance globally so that it's easy
