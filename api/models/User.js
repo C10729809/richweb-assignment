@@ -25,7 +25,11 @@ module.exports = {
 	password : {
 		type: 'string',
 		required : true
-	}	
+	},
+	admin : {
+		type: 'boolean',
+		defaultTo : false
+	}
   }
 
 };
