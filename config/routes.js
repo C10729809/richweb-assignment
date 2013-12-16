@@ -9,7 +9,7 @@ module.exports.routes = {
     controller: 'ChatController',
     action: 'chatroom'
   },
-  '/dynamic/about': {
-    view: 'dynamic/about'
+  '/static/about': {
+    view: 'static/about'
   }
 };
