@@ -17,34 +17,20 @@
 
 module.exports = {
 	'chatroom' : function(req, res){
+		//subscribe this socket (user) to revcieve updates to the chat model
         	Chat.subscribe(req.socket);
-		//alert("subscribed");
 		res.view();
 	},
     
   	create : function(req, res, next){
+		//send the new message to mongo
 		Chat.create(req.params.all(), function messageCreated(err, chat){
 			if(err){
 				console.log(err);
-				//return res.redirect("/chat/chatroom");
 			}
-
+			//send the new message to all clients
 			Chat.publishCreate({id: chat.id, username: req.session.User.username, message: chat.message});
-			//res.redirect('/chat');
-			//res.redirect("/chat/show/"+chat.message);
+			return true;
 		});	
-	},
-	show: function (req, res, next){
-		Chat.find(req.param('message'), function found(err, chats){
-			if(err) {
-				console.log(err);
-			}
-			if(!chats){
-				return res.redirect("/static/");
-			}
-			res.view({
-				chats: chats
-			});		
-		});
 	}
 };
