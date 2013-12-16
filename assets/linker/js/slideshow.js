@@ -30,20 +30,18 @@ function showImage()
   }); 
 }
 
-var socket = io.connect('http://localhost:1337');
+var socket = io.connect('http://54.201.13.243:1337');
 socket.on('connect', function(){
   socket.request('/chat',{}, function(result){
     for(var i in result){
-	  $("#msgList").append('<li>'+result[i].message+'<li>');
+	  $("#msgList").prepend('<div><h4>'+result[i].username+": "+result[i].message+'</h4><div>');
     }
 
   });
 });
 
 socket.on('message', function(msg){
-   //alert('message received: ');
-   //$("#msgList").prepend('<li>'+msg.data.message+'<li>');
-   $("#msgList").prepend('<li>'+msg.data.username+': '+msg.data.message+'<li>');
+   $("#msgList").prepend('<div><h4>'+msg.data.username+': '+msg.data.message+'</h4><div>');
    console.log(msg);
 });
 

@@ -20,24 +20,21 @@
 		<ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/showing/index">Showing</a></li>
-<<<<<<< HEAD
-	        <li><a href="/dynamic/about">About</a></li>
-=======
-
-	     <li><a href="/chat/chatroom">Chatroom</a></li>
-	     <li><a href="/dynamic/about">About</a></li>
-	    <li><a href="/dynamic/about">About</a></li>
->>>>>>> ea5ce193baaea1672bb4dd6fe1c5f3f0ad13ed49
-            <li><a href="/dynamic/contact">Contact</a></li>
-            <li><a href="/showing/new">Admin</a></li>
+			<li><a href="/chat/chatroom">Chatroom</a></li>
+			<li><a href="/dynamic/about">About</a></li>
 		</ul>
 		
 		<div align="right" >
 		
 		<% if(!req.session.authenticated) { %>
 			<a href="/user/new" class="btn btn-success navbar-btn">Sign up</a>
-			<a href="/session/new" class="btn btn-primary navbar-btn">Login</a> 
+			<a href="/session/new" class="btn btn-primary navbar-btn">Login</a>		
 		<%} else { %>
+			<% if(req.session.User.admin) { %>
+				<ul class="nav navbar-nav">
+					<li><a href="/showing/new">Admin</a></li>
+				</ul>
+			<%} %>
 			<ul class="nav navbar-nav">
 				<li><a href="/user/show/<%= session.User.id %>"><%= session.User.username %>'s account</a></li>
 			</ul>&nbsp;
