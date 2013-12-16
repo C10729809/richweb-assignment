@@ -13,6 +13,9 @@ module.exports = {
   attributes: {
 	message : {
 		type: 'string'
+	},
+	username : {
+		type: 'string'
 	}	
   }
 };

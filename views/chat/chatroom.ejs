@@ -3,17 +3,19 @@
 	<p></p>
 	<form action="/chat/create" method="POST" role="form">
 		<div class="input-group">
-		      <input type="text" class="form-control" placeholder="Enter message" name="message" id ="inp">
+		      <input type="text" class="form-control" placeholder="Enter message" name="message" id ="msgInput">
 		      <span class="input-group-btn">
-			<input type="submit" class="btn btn-default" value="Send" id="sendbtn"/>
+			<input type="submit" class="btn btn-default" id="sendbtn" value="Send"/>
+			<!--<button id="sendbtn">send</button>-->
 			<input type="hidden" name="_csrf" value="<%= _csrf%>" />
 		      </span>
 		</div>
 	</form>
 	<div align="left" style="padding:5px"><label>Live Chat feed</label></div>
 
-	<div align="center">
-		<textarea readonly id="messageList"></textarea>
+	<div>
+	  <ul id="msgList">
+	  </ul>
 	</div>
 </div>
 

@@ -6,7 +6,7 @@ var intv;
 
 $( document ).ready(function() {
      imgNum = Math.floor((Math.random()*imgLength)+1);
-     document.getElementById('bannerImg').src = images[imgNum];
+     document.getElementById('bannerImg').src = images[imgNum];    
 });
 
 $(function(){
@@ -31,5 +31,23 @@ function showImage()
     //clearInterval(intv);
   }); 
 }
+
+var socket = io.connect('http://localhost:1337');
+socket.on('connect', function(){
+  //socket.emit('chatroom', "chat connected");
+  socket.request('/chat',{}, function(result){
+    for(var i in result){
+	  $("#msgList").append('<li>'+result[i].message+'<li>');
+    }
+
+  });
+});
+
+socket.on('message', function(msg){
+   //alert('message received: ');
+   $("#msgList").prepend('<li>'+msg.data.message+'<li>');
+   console.log(msg);
+});
+
 
 
