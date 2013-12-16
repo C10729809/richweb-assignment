@@ -4,6 +4,7 @@
 	<p></p>
 	<form action="/chat/create" method="POST" role="form">
 		<div class="input-group">
+			<input type="hidden" name="username" value="<%= session.User.username %>">
 		      <input type="text" class="form-control" placeholder="Enter message" name="message" id ="msgInput">
 		      <span class="input-group-btn">
 			<input type="submit" class="btn btn-default" id="sendbtn" value="Send"/>
@@ -19,4 +20,3 @@
 	  </ul>
 	</div>
 </div>
-

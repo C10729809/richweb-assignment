@@ -5,28 +5,6 @@
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    
-    <!--  
-        Stylesheets and Preprocessors
-        ==============================
-
-        You can always bring in CSS files manually with `link` tags, or asynchronously
-        on the client using a solution like AMD (RequireJS).  Or, if you like, you can
-        take advantage of Sails' boilerplate asset management.
-
-        By default, stylesheets from your `assets/linker/styles` folder are included
-        here automatically.  Both CSS (.css) and LESS (.less) are supported.
-        In production, your styles will be minified and concatenated into a single file.
-        
-        To customize any part of the built-in behavior, just edit your Gruntfile.
-        For example, here are a few things you could do:
-            
-            + Change the order of your CSS files
-            + Import stylesheets from other directories
-            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
-    -->
-
     <!--STYLES-->
     <link rel="stylesheet" href="/linker/styles/bootstrap.css">
     <link rel="stylesheet" href="/linker/styles/site.css">
@@ -35,27 +13,28 @@
 
   <body>
 <body>
-
+	<!--HEADER-->
     <div class="navbar navbar-inverse nabar-fixed-top">
 	<div class="container">
 		<a class="navbar-brand" href="/"><b>sociallyCinematic</b></a>
 		<ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/showing/index">Showing</a></li>
-
-	     <li><a href="/chat/chatroom">Chatroom</a></li>
-	     <li><a href="/dynamic/about">About</a></li>
-	    <li><a href="/dynamic/about">About</a></li>
-            <li><a href="/dynamic/contact">Contact</a></li>
-            <li><a href="/showing/new">Admin</a></li>
+			<li><a href="/chat/chatroom">Chatroom</a></li>
+			<li><a href="/dynamic/about">About</a></li>
 		</ul>
 		
 		<div align="right" >
 		
 		<% if(!req.session.authenticated) { %>
 			<a href="/user/new" class="btn btn-success navbar-btn">Sign up</a>
-			<a href="/session/new" class="btn btn-primary navbar-btn">Login</a> 
+			<a href="/session/new" class="btn btn-primary navbar-btn">Login</a>		
 		<%} else { %>
+			<% if(req.session.User.admin) { %>
+				<ul class="nav navbar-nav">
+					<li><a href="/showing/new">Admin</a></li>
+				</ul>
+			<%} %>
 			<ul class="nav navbar-nav">
 				<li><a href="/user/show/<%= session.User.id %>"><%= session.User.username %>'s account</a></li>
 			</ul>&nbsp;
@@ -66,6 +45,9 @@
     </div>
 
     <%- body %>
+	
+	
+	<!--FOOTER-->
     </div class="container">
 	<hr>
 	<footer class="footer">
@@ -75,64 +57,13 @@
 	</footer>
     </div>
 
-
-
-
-    <!--
-        Client-side Templates
-        ========================
-
-    		HTML templates are important prerequisites of modern, rich client applications.
-        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
-        that you load these templates client-side.
-
-        By default, your Gruntfile is configured to automatically load and precompile
-        client-side JST templates in your `assets/linker/templates` folder, then
-        include them here automatically.
-        
-        To customize this behavior to fit your needs, just edit your Gruntfile.
-        For example, here are a few things you could do:
-
-            + Import templates from other directories
-            + Use a different template engine (handlebars, jade, dust, etc.)
-            + Internationalize your templates using a server-side stringfile
-              before they're served.
-    -->
-
-    <!--TEMPLATES-->
-    
-    <!--TEMPLATES END-->
-
-
-    <!--
-
-      Client-side Javascript
-      ========================
-
-      You can always bring in JS files manually with `script` tags, or asynchronously
-      on the client using a solution like AMD (RequireJS).  Or, if you like, you can 
-      take advantage of Sails' boilerplate asset management.
-
-      By default, filesin your `assets/linker/js` folder are included here
-      automatically.  Both JavaScript (.js) and CoffeeScript (.coffee) are supported.
-      In production, your scripts will be minified and concatenated into a single file.
-      
-      To customize any part of the built-in behavior, just edit your Gruntfile.
-      For example, here are a few things you could do:
-          
-          + Change the order of your scripts
-          + Import scripts from other directories
-          + Use a different preprocessor, like TypeScript
-
-    -->
-
     <!--SCRIPTS-->
     <script src="/linker/js/socket.io.js"></script>
     <script src="/linker/js/sails.io.js"></script>
     <script src="/linker/js/app.js"></script>
+    <script src="/linker/js/jquery-2.0.3.js"></script>
     <script src="/linker/js/bootstrap.js"></script>
     <script src="/linker/js/chat.js"></script>
-    <script src="/linker/js/jquery-2.0.3.js"></script>
     <script src="/linker/js/slideshow.js"></script>
     <!--SCRIPTS END-->
   </body>

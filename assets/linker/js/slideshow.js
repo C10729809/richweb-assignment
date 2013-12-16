@@ -34,6 +34,7 @@ function showImage()
 /////////////////////////////////////////////////////////////////////
 
 
+<<<<<<< HEAD
 //connect to socketio and get the list of messages from the database
 //and populate the message list
 var socket = io.connect('http://localhost:1337');
@@ -41,6 +42,13 @@ socket.on('connect', function(){
   socket.request('/chat',{}, function(result){
     for(var i in result){
 	  $("#msgList").prepend('<li>'+result[i].message+'<li>');
+=======
+var socket = io.connect('http://54.201.13.243:1337');
+socket.on('connect', function(){
+  socket.request('/chat',{}, function(result){
+    for(var i in result){
+	  $("#msgList").prepend('<div><h4>'+result[i].username+": "+result[i].message+'</h4><div>');
+>>>>>>> 088f5e359af0a758ecbf98eadd2c290eb676203b
     }
 
   });
@@ -48,9 +56,7 @@ socket.on('connect', function(){
 
 //listen for message event and append the new message to message list
 socket.on('message', function(msg){
-   //alert('message received: ');
-   //$("#msgList").prepend('<li>'+msg.data.message+'<li>');
-   $("#msgList").prepend('<li>'+msg.data.username+': '+msg.data.message+'<li>');
+   $("#msgList").prepend('<div><h4>'+msg.data.username+': '+msg.data.message+'</h4><div>');
    console.log(msg);
 });
 
