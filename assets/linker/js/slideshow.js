@@ -23,18 +23,15 @@ function showImage()
     if (imgNum < 0) {
         imgNum = imgLength;
     }
-  //document.getElementById('bannerImg').src = images[imgNum];
   $("#bannerImg").animate({opacity:0},"slow",function() { 
     $(this).load(function() { $(this).animate({opacity:1},"slow"); }); 
     $(this).attr("src", images[imgNum]); 
     imgNum++;
-    //clearInterval(intv);
   }); 
 }
 
 var socket = io.connect('http://localhost:1337');
 socket.on('connect', function(){
-  //socket.emit('chatroom', "chat connected");
   socket.request('/chat',{}, function(result){
     for(var i in result){
 	  $("#msgList").append('<li>'+result[i].message+'<li>');
@@ -45,7 +42,8 @@ socket.on('connect', function(){
 
 socket.on('message', function(msg){
    //alert('message received: ');
-   $("#msgList").prepend('<li>'+msg.data.message+'<li>');
+   //$("#msgList").prepend('<li>'+msg.data.message+'<li>');
+   $("#msgList").prepend('<li>'+msg.data.username+': '+msg.data.message+'<li>');
    console.log(msg);
 });
 

@@ -28,7 +28,8 @@ module.exports = {
 				console.log(err);
 				//return res.redirect("/chat/chatroom");
 			}
-			Chat.publishCreate({id: chat.id, message: chat.message});
+
+			Chat.publishCreate({id: chat.id, username: req.session.User.username, message: chat.message});
 			//res.redirect('/chat');
 			//res.redirect("/chat/show/"+chat.message);
 		});	
