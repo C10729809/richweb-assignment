@@ -30,7 +30,7 @@ function showImage()
     imgNum++;
   }); 
 }
-////////////////////// End of slideshow code
+//End of slideshow code
 
 
 // connect to socket and retrive the list of chat messages from the database
