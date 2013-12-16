@@ -48,8 +48,12 @@ module.exports = {
 				req.session.authenticated = true;
 				req.session.User = user;
 				
+				if(req.session.User.admin){
+					res.redirect('/showing/new');
+					return;
+				}
+				
 				res.redirect('/user/show/' + user.id);
-				return;
 			}
 		});
 	},
