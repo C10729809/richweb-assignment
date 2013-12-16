@@ -20,8 +20,7 @@
 		<ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/showing/index">Showing</a></li>
-			<li><a href="/chat/chatroom">Chatroom</a></li>
-			<li><a href="/dynamic/about">About</a></li>
+			<li><a href="/static/about">About</a></li>
 		</ul>
 		
 		<div align="right" >
@@ -36,6 +35,7 @@
 				</ul>
 			<%} %>
 			<ul class="nav navbar-nav">
+				<li><a href="/chat/chatroom">Chatroom</a></li>
 				<li><a href="/user/show/<%= session.User.id %>"><%= session.User.username %>'s account</a></li>
 			</ul>&nbsp;
 			<a href="/session/destroy" class="btn btn-primary navbar-btn">Logout</a>
@@ -63,8 +63,12 @@
     <script src="/linker/js/app.js"></script>
     <script src="/linker/js/jquery-2.0.3.js"></script>
     <script src="/linker/js/bootstrap.js"></script>
+<<<<<<< HEAD
     <script src="/linker/js/chat.js"></script>
     <script src="/linker/js/main.js"></script>
+=======
+    <script src="/linker/js/slideshow.js"></script>
+>>>>>>> 0ad947dc42b60194cc62039e48f5ff12b92a12eb
     <!--SCRIPTS END-->
   </body>
 </html>
