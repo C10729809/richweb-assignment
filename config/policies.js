@@ -13,12 +13,6 @@ module.exports.policies = {
     "*" :  "authAdmin"
   },
   
-  // policies for char
-  // user must be logged in to chat
-  chat : {
-	'*' : "authAdmin"
-  }
-  
   // anyonw can create a user account  
   user : {
 	'new' : true,
