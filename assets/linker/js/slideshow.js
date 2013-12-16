@@ -2,20 +2,21 @@ var images = ["../images/hgbanner.jpg","../images/grav_image.jpg","../images/the
 
 var imgNum = 0;
 var imgLength = images.length -1;
+var intv;
 
 $( document ).ready(function() {
      imgNum = Math.floor((Math.random()*imgLength)+1);
-     document.getElementById('bannerImg').src = images[imgNum]
+     document.getElementById('bannerImg').src = images[imgNum];
 });
 
 $(function(){
-    setInterval(function(){showImage()},4000);   
+    intv = setInterval(function(){showImage()},5000);  
+    //clearInterval(intv); 
     return false;
 });
 
 function showImage()
 {
-   imgNum++;
    if (imgNum > imgLength) {
         imgNum = 0;
     }
@@ -25,8 +26,9 @@ function showImage()
   //document.getElementById('bannerImg').src = images[imgNum];
   $("#bannerImg").animate({opacity:0},"slow",function() { 
     $(this).load(function() { $(this).animate({opacity:1},"slow"); }); 
-
-  $(this).attr("src", images[imgNum]); 
+    $(this).attr("src", images[imgNum]); 
+    imgNum++;
+    //clearInterval(intv);
   }); 
 }
 
